@@ -177,6 +177,7 @@
              border: 4px solid #FF6B35;
              border-left: 8px solid #1ABC9C;
              scroll-margin-top: 280px;
+             overflow: hidden;
          }
 
         section h2 {
@@ -481,7 +482,52 @@
         }
 
         .buffet-hidden {
-            display: none;
+             display: none;
+         }
+
+        .accordion-header {
+             background-color: #F0FFFE;
+             border: 2px solid #1ABC9C;
+             border-left: 6px solid #FF6B35;
+             padding: 1rem;
+             cursor: pointer;
+             display: flex;
+             justify-content: space-between;
+             align-items: center;
+             font-weight: 600;
+             color: #FF6B35;
+             transition: background-color 0.3s;
+             margin-bottom: 0;
+        }
+
+        .accordion-header:hover {
+             background-color: #E0F8F5;
+        }
+
+        .accordion-header.active {
+             background-color: #D1ECF1;
+        }
+
+        .accordion-content {
+             display: none;
+             padding: 1rem;
+             background-color: white;
+             border: 2px solid #1ABC9C;
+             border-top: none;
+             border-left: 6px solid #FF6B35;
+        }
+
+        .accordion-content.active {
+             display: block;
+        }
+
+        .accordion-toggle {
+             font-size: 1.5rem;
+             transition: transform 0.3s;
+        }
+
+        .accordion-toggle.active {
+             transform: rotate(180deg);
         }
 
         a {
@@ -686,9 +732,6 @@
     </style>
 </head>
 <body>
-    <!-- Music Player Button -->
-    <a href="https://www.youtube.com/watch?v=pEmX5HR9ZxU" target="_blank" class="music-button" title="And the Beat Goes On - The Whispers">♪</a>
-
     <!-- Hamburger Menu Button -->
     <button class="hamburger-btn" id="hamburgerBtn" aria-label="Menü öffnen">☰</button>
 
@@ -702,9 +745,9 @@
             <nav>
                 <a href="#welcome">Willkommen</a>
                 <a href="#program">Programm</a>
-                <a href="#activities">Aktivitäten</a>
                 <a href="#food">Buffet</a>
                 <a href="#travel">Übernachtung</a>
+                <a href="#activities">Aktivitäten</a>
                 <a href="#photos">Fotos</a>
             </nav>
         </div>
@@ -714,10 +757,9 @@
     <main id="mainContent">
         <!-- Welcome Section -->
         <section id="welcome">
-            <div style="display: flex; align-items: flex-start; gap: 0.5rem;">
-                <h2 style="margin-bottom: 0;">And the Beat Goes On</h2>
-                <span style="font-size: 2rem; color: #FF6B35;">♫</span>
-            </div>
+            <a href="https://www.youtube.com/watch?v=pEmX5HR9ZxU" target="_blank" style="text-decoration: none; color: inherit;">
+                <h2 style="margin-bottom: 0; cursor: pointer; display: flex; align-items: center; gap: 0.5rem;">And the Beat Goes On <span style="font-size: 1.8rem; color: #FF6B35;">♫</span></h2>
+            </a>
             <div class="welcome-highlight">
                 <p>
                     <strong style="font-size: 1.1rem;">Einladung zum Sommerfest</strong><br><br>
@@ -725,8 +767,10 @@
                     <strong>Ort:</strong> In unserem Garten in der Bauernreihe 5, Tarmstedt
                 </p>
             </div>
-            <p style="font-size: 0.95rem; margin: 1.5rem 0; padding: 1rem; background-color: #F0FFFE; border-left: 4px solid #1ABC9C; color: #555;"><strong>Rückmeldung bis zum 01. Mai:</strong> Wir freuen uns über eure Rückmeldung, ob ihr dabei seid.</p>
-            <p>Diese Seite ist ausschließlich für unsere geladenen Gäste gedacht.</p>
+            <div style="font-size: 0.95rem; margin: 1.5rem 0; padding: 1rem; background-color: #FFF9E6; border-left: 4px solid #FF6B35; color: #555;">
+                <p style="margin: 0 0 0.8rem 0;"><strong>Rückmeldung bis zum 01. Mai:</strong> Wir freuen uns über eure Rückmeldung, ob ihr dabei seid.</p>
+                <p style="margin: 0;"><strong>Neuigkeiten:</strong> Diese Seite wird fortlaufend aktualisiert.</p>
+            </div>
         </section>
 
         <!-- Program Section -->
@@ -747,7 +791,7 @@
                 <ul>
                     <li><strong>Ab 16:00</strong> – Der Zapfhahn ist eröffnet, die Kaffeemaschine blubbert.</li>
                     <li><strong>17:30-19:00</strong> – Der Freizeitwissenschaftler lädt zu gemeinsamem Spaß und Spiel im Garten ein. Wer noch ein tolles Spiel mitbringen möchte, ist dazu herzlich eingeladen.</li>
-                    <li><strong>19:30</strong> – Abendessen: Lukullische Überraschungen von nah und fern. Wir sind schon ganz gespannt.</li>
+                    <li><strong>19:30</strong> – Abendessen: Lukullische Überraschungen von nah und fern.</li>
                     <li><strong>Ab 21:00 bis Open End</strong> – DJ-Sets</li>
                 </ul>
             </div>
@@ -758,74 +802,6 @@
                     <li><strong>Bis 12:00</strong> – Frühstück und gemütlicher Ausklang</li>
                 </ul>
             </div>
-        </section>
-
-        <!-- Activities & Surroundings Section -->
-        <section id="activities">
-            <h2>Aktivitäten</h2>
-            <p>Für alle die bereits Freitag angereist sind, hier ein paar Ausflugstipps für Samstag bis es los geht.</p>
-
-            <p><strong>Heiße Tipps aus der Töpferstube:</strong></p>
-            
-            <div style="border: 2px dashed #FF6B35; padding: 1rem; margin-bottom: 0.5rem; border-radius: 4px;">
-                <p style="margin: 0;"><strong>Paul:</strong> <em>"Ganz klar eine Fahrradtour oder ein ausgedehnter Spaziergang in der Umgebung."</em></p>
-            </div>
-            
-            <div style="border: 2px dashed #FF6B35; padding: 1rem; margin-bottom: 0.5rem; border-radius: 4px;">
-                <p style="margin: 0;"><strong>Lino:</strong> <em>"An einem heißen Sommertag würde ich zum Baggersee laufen. Nur was für echte Abenteurer."</em></p>
-            </div>
-            
-            <div style="border: 2px dashed #FF6B35; padding: 1rem; margin-bottom: 0.5rem; border-radius: 4px;">
-                <p style="margin: 0;"><strong>Gerlinde:</strong> <em>"Ich kann immer einen Ausflug nach Fischerhude empfehlen. Landschaftlich wunderschön!"</em></p>
-            </div>
-            
-            <div style="border: 2px dashed #FF6B35; padding: 1rem; margin-bottom: 0.5rem; border-radius: 4px;">
-                <p style="margin: 0;"><strong>Matthias:</strong> <em>"Mit den Kleinen ist ein Ausflug an den Sandstrand an der Hamme meine klare Empfehlung."</em></p>
-            </div>
-
-            <div class="day">
-                <h3>Tarmstedt</h3>
-                <ul>
-                    <li>Wockenendpark Rethbergsee / Campingplatz mit kleinem Badesee und Sandstrand (Sandspielzeug vorhanden / Rutsche ins Wasser / Toll mit kleinen Kindern!)</li>
-                    <li>Spazierweg zum Moorlehrpfad (Start in unserem Garten, ca. 90 min.)</li>
-                    <li>Baggersee (schön und zu empfehlen, aber nur bedingt erlaubt = Kinder haften für ihre Eltern)</li>
-                </ul>
-            </div>
-
-            <div class="day">
-                <h3>Künstlerdorf Fischerhude (15 km)</h3>
-                <ul>
-                    <li>Otto Modersohn Museum</li>
-                    <li>KAFF Kunst am Fluss</li>
-                    <li>Spaziergang durch das idyllische Dorf und am Wümme Seitenarm</li>
-                    <li>Eis essen im Cafe Lindenlaub, diverse Restaurants</li>
-                </ul>
-            </div>
-
-            <div class="day">
-                <h3>Künstlerdorf Worpswede (15 km)</h3>
-                <ul>
-                    <li>Diverse Museen z.B. Große Kunstschau</li>
-                    <li>Barkenhoff / Heinrich Vogeler</li>
-                    <li>Hammestrand – Sandstrand an der Hamme mit Spielzeug für die Kleinen</li>
-                    <li>Kanuverleih "Land of Green" / Paddeln auf der Hamme</li>
-                    <li>Spazierweg an der Hamme</li>
-                </ul>
-            </div>
-
-            <div class="day">
-                <h3>Sonstiges</h3>
-                <ul>
-                    <li>Freibad in Wilstedt (4 km)</li>
-                    <li>Freibad in Hepstedt (4 km)</li>
-                    <li>Eis essen in Wilstedt Milchkontor (4 km)</li>
-                    <li>Otterstedter See (15 km)</li>
-                    <li>Waldspielplatz Großes Holz in Zeven (15 km)</li>
-                    <li>Bremen (35 km) – Besuch im Bremer Viertel, Universum</li>
-                </ul>
-            </div>
-
-
         </section>
 
         <!-- Food & Buffet Section -->
@@ -852,7 +828,7 @@
 
                     <div class="form-group">
                         <label for="itemName">Was bringe ich mit?</label>
-                         <input type="text" id="itemName" name="itemName" placeholder="z.B. Nassfutter" required>
+                         <input type="text" id="itemName" name="itemName" placeholder="z.B. Kaninchenohr" required>
                      </div>
 
                      <div class="form-group">
@@ -862,15 +838,13 @@
                         </select>
                     </div>
 
-                    <div class="form-group">
-                        <label for="notes">Notizen</label>
-                        <textarea id="notes" name="notes" placeholder="z.B. Vegetarisch, nach Oma´s Rezept etc."></textarea>
-                    </div>
-
                     <div class="button-group">
                         <button type="submit" class="buffet-button" id="submitBtn">Hinzufügen</button>
                     </div>
                 </form>
+                <div id="successMessage" class="buffet-status success" style="display: none; text-align: center; margin-top: 1rem;">
+                    ✓ Vielen Dank! Dein Eintrag wurde gespeichert.
+                </div>
             </div>
 
             <!-- Buffet Items List -->
@@ -886,78 +860,164 @@
              
              <p>Es gibt verschiedene Möglichkeiten für Übernachtungen:</p>
              <ul>
-                <li>im Garten ist Platz für Zelte, Wohnmobile und Wohnwagen.</li>
+                <li>im Garten ist Platz für Zelte, Wohnmobile und Wohnwagen,</li>
                 <li>außerdem gibt es Unterkünfte in der Region.</li>
              </ul>
              <p>Gebt uns gerne vorher bescheid, damit wir hier ein bisschen planen können.</p>
 
              <h3>Unterkünfte in der Region</h3>
              
-             <div class="day">
-                 <h4 style="color: #FF6B35; margin-top: 0;">Tarmstedt (Unterkünfte sind zu Fuß zu erreichen)</h4>
-                 
-                 <p><strong>1. Ferienwohnung Haeseker</strong><br>
-                 Erika Haeseker, Hinterm dem Eichenbruche 18, 27412 Tarmstedt, Telefon: 04283 8314<br>
-                 Ferienwohnung 56 qm für 1-2 Personen, 2 Zimmer, Küche, Bad</p>
+             <div class="accordion">
+                 <div class="accordion-header" onclick="toggleAccordion(this)">
+                     <span>Tarmstedt (Unterkünfte sind zu Fuß zu erreichen)</span>
+                     <span class="accordion-toggle">▼</span>
+                 </div>
+                 <div class="accordion-content">
+                     <p><strong>1. Ferienwohnung Haeseker</strong><br>
+                     Erika Haeseker, Hinterm dem Eichenbruche 18, 27412 Tarmstedt, Telefon: 04283 8314<br>
+                     Ferienwohnung 56 qm für 1-2 Personen, 2 Zimmer, Küche, Bad</p>
 
-                 <p><strong>2. Tarmstedter Hof</strong><br>
-                 Ingo Lüpke, Hauptstraße 16, 27412 Tarmstedt, Telefon: 04283 8440, <a href="www.tarmstedter-hof.de" target="_blank">www.tarmstedter-hof.de</a><br>
-                 4 Einzelzimmer und 4 Doppelzimmer mit Dusche und WC</p>
+                     <p><strong>2. Tarmstedter Hof</strong><br>
+                     Ingo Lüpke, Hauptstraße 16, 27412 Tarmstedt, Telefon: 04283 8440, <a href="www.tarmstedter-hof.de" target="_blank">www.tarmstedter-hof.de</a><br>
+                     4 Einzelzimmer und 4 Doppelzimmer mit Dusche und WC</p>
 
-                 <p><strong>3. Ferienwohnungen am Rethbergsee</strong><br>
-                 Klaus Pfleging, Wörpeweg 51, 27412 Tarmstedt, Telefon: 04283 422, <a href="www.rethbergsee-wochenendpark.de" target="_blank">www.rethbergsee-wochenendpark.de</a><br>
-                 Ferienhaus für bis zu 2 Personen, Ferienwohnung für bis zu 4 Personen</p>
+                     <p><strong>3. Ferienwohnungen am Rethbergsee</strong><br>
+                     Klaus Pfleging, Wörpeweg 51, 27412 Tarmstedt, Telefon: 04283 422, <a href="www.rethbergsee-wochenendpark.de" target="_blank">www.rethbergsee-wochenendpark.de</a><br>
+                     Ferienhaus für bis zu 2 Personen, Ferienwohnung für bis zu 4 Personen</p>
 
-                 <p><strong>4. Ferienwohnung Blickfeld</strong><br>
-                 Kai Franz, Zum Eichenkuller 8, 27412 Tarmstedt, Telefon: 04283 980533, <a href="www.ferienwohnung-tarmstedt.de" target="_blank">www.ferienwohnung-tarmstedt.de</a><br>
-                 Ferienwohnung mit Wohnzimmer, Küche, Schlafzimmer mit Doppelbett, Dusche/Bad und Balkon</p>
+                     <p><strong>4. Ferienwohnung Blickfeld</strong><br>
+                     Kai Franz, Zum Eichenkuller 8, 27412 Tarmstedt, Telefon: 04283 980533, <a href="www.ferienwohnung-tarmstedt.de" target="_blank">www.ferienwohnung-tarmstedt.de</a><br>
+                     Ferienwohnung mit Wohnzimmer, Küche, Schlafzimmer mit Doppelbett, Dusche/Bad und Balkon</p>
+                 </div>
              </div>
 
-             <div class="day">
-                 <h4 style="color: #FF6B35; margin-top: 0;">Wilstedt (ca. 4 km)</h4>
-                 
-                 <p><strong>5. Pension Wiege</strong><br>
-                 Änne Wiege, Konterschaft 1 a, 27412 Wilstedt, Telefon: 04283 981575<br>
-                 3 Doppelzimmer, Mehrbettzimmer auf Anfrage</p>
+             <div class="accordion">
+                 <div class="accordion-header" onclick="toggleAccordion(this)">
+                     <span>Wilstedt (ca. 4 km)</span>
+                     <span class="accordion-toggle">▼</span>
+                 </div>
+                 <div class="accordion-content">
+                     <p><strong>5. Pension Wiege</strong><br>
+                     Änne Wiege, Konterschaft 1 a, 27412 Wilstedt, Telefon: 04283 981575<br>
+                     3 Doppelzimmer, Mehrbettzimmer auf Anfrage</p>
 
-                 <p><strong>6. Ferienwohnung Heike Gustke</strong><br>
-                 Heike Gustke, Richtweg 2a, 27412 Wilstedt, Mobil: 0172 6398026<br>
-                 Ferienwohnung im mediterranen Baustil mit 2 Schlafzimmern, Wohnküche und zwei Bädern</p>
+                     <p><strong>6. Ferienwohnung Heike Gustke</strong><br>
+                     Heike Gustke, Richtweg 2a, 27412 Wilstedt, Mobil: 0172 6398026<br>
+                     Ferienwohnung im mediterranen Baustil mit 2 Schlafzimmern, Wohnküche und zwei Bädern</p>
+                 </div>
              </div>
 
-             <div class="day">
-                 <h4 style="color: #FF6B35; margin-top: 0;">Bülstedt (8 km)</h4>
-                 
-                 <p><strong>7. Ferienwohnung Petermann</strong><br>
-                 Carsten Petermann, Dorfstraße 14 a, 27412 Bülstedt, Telefon: 04283 5826 / 01575 4988728, <a href="www.ferienwohnung-bei-worpswede.de" target="_blank">www.ferienwohnung-bei-worpswede.de</a><br>
-                 Ferienwohnung ca. 45 qm für 1-2 Personen, Bad mit Fußbodenheizung, Sauna, WLAN und Gartenbenutzung</p>
+             <div class="accordion">
+                 <div class="accordion-header" onclick="toggleAccordion(this)">
+                     <span>Bülstedt (8 km)</span>
+                     <span class="accordion-toggle">▼</span>
+                 </div>
+                 <div class="accordion-content">
+                     <p><strong>7. Ferienwohnung Petermann</strong><br>
+                     Carsten Petermann, Dorfstraße 14 a, 27412 Bülstedt, Telefon: 04283 5826 / 01575 4988728, <a href="www.ferienwohnung-bei-worpswede.de" target="_blank">www.ferienwohnung-bei-worpswede.de</a><br>
+                     Ferienwohnung ca. 45 qm für 1-2 Personen, Bad mit Fußbodenheizung, Sauna, WLAN und Gartenbenutzung</p>
+                 </div>
              </div>
 
-             <div class="day">
-                 <h4 style="color: #FF6B35; margin-top: 0;">Vorwerk/Buchholz (9 km)</h4>
-                 
-                 <p><strong>8. Gästehaus Alte Schule</strong><br>
-                 Barbara Franke-Siering, Dipshorner Straße 29, 27412 Vorwerk, Telefon: 04283 5269 / 0151-1098137<br>
-                 1 Einzelzimmer und 4 Doppelzimmer (zusätzliche Matratzen für Kinder/Jugendliche möglich)</p>
+             <div class="accordion">
+                 <div class="accordion-header" onclick="toggleAccordion(this)">
+                     <span>Vorwerk/Buchholz (9 km)</span>
+                     <span class="accordion-toggle">▼</span>
+                 </div>
+                 <div class="accordion-content">
+                     <p><strong>8. Gästehaus Alte Schule</strong><br>
+                     Barbara Franke-Siering, Dipshorner Straße 29, 27412 Vorwerk, Telefon: 04283 5269 / 0151-1098137<br>
+                     1 Einzelzimmer und 4 Doppelzimmer (zusätzliche Matratzen für Kinder/Jugendliche möglich)</p>
+                 </div>
              </div>
 
-             <div class="day">
-                 <h4 style="color: #FF6B35; margin-top: 0;">Worpswede (ca. 15 km)</h4>
-                 
-                 <p><strong>9. Campingplatz Land of Green</strong><br>
-                 Waakhauser Str. 20, 27726 Worpswede, Telefon: +49 40 8080 576 33, E-Mail: <a href="mailto:info@landofgreen.de">info@landofgreen.de</a><br>
-                 Naturresort mit Tiny Houses, Baumzelten, Stellplätzen für Wohnmobile</p>
+             <div class="accordion">
+                 <div class="accordion-header" onclick="toggleAccordion(this)">
+                     <span>Worpswede (ca. 15 km)</span>
+                     <span class="accordion-toggle">▼</span>
+                 </div>
+                 <div class="accordion-content">
+                     <p><strong>9. Campingplatz Land of Green</strong><br>
+                     Waakhauser Str. 20, 27726 Worpswede, Telefon: +49 40 8080 576 33, E-Mail: <a href="mailto:info@landofgreen.de">info@landofgreen.de</a><br>
+                     Naturresort mit Tiny Houses, Baumzelten, Stellplätzen für Wohnmobile</p>
+                 </div>
              </div>
 
              <p style="margin-top: 2rem; font-size: 0.95rem; word-break: break-word;">Weitere Unterkünfte in der Region findet ihr auf <a href="https://www.tarmstedt.de/Tourismus/Unterkunfte" target="_blank">www.tarmstedt.de/Tourismus/Unterkünfte</a>.</p>
-         </section>
+             </section>
 
-        <!-- Photos Section -->
+             <!-- Activities & Surroundings Section -->
+             <section id="activities">
+             <h2>Aktivitäten</h2>
+             <p>Für alle die bereits Freitag angereist sind, hier ein paar Ausflugstipps für Samstag bis es los geht.</p>
+
+             <p><strong>Heiße Tipps aus der Töpferstube:</strong></p>
+             
+             <div style="border: 2px dashed #FF6B35; padding: 1rem; margin-bottom: 0.5rem; border-radius: 4px;">
+               <p style="margin: 0;"><strong>Paul:</strong> <em>"Ganz klar eine Fahrradtour oder ein ausgedehnter Spaziergang in der Umgebung."</em></p>
+             </div>
+             
+             <div style="border: 2px dashed #FF6B35; padding: 1rem; margin-bottom: 0.5rem; border-radius: 4px;">
+               <p style="margin: 0;"><strong>Lino:</strong> <em>"Ich kenne einen geheimen Spot zum Schwimmen in Tarmstedt – fragt mich!"</em></p>
+             </div>
+             
+             <div style="border: 2px dashed #FF6B35; padding: 1rem; margin-bottom: 0.5rem; border-radius: 4px;">
+               <p style="margin: 0;"><strong>Gerlinde:</strong> <em>"Ich kann immer einen Ausflug nach Fischerhude empfehlen. Landschaftlich wunderschön!"</em></p>
+             </div>
+             
+             <div style="border: 2px dashed #FF6B35; padding: 1rem; margin-bottom: 0.5rem; border-radius: 4px;">
+               <p style="margin: 0;"><strong>Matthias:</strong> <em>"Mit den Kleinen ist ein Ausflug nach Worpswede, an den Sandstrand an der Hamme, meine klare Empfehlung."</em></p>
+             </div>
+
+             <div class="day">
+               <h3>Tarmstedt</h3>
+               <ul>
+                   <li>Wockenendpark Rethbergsee – Badesee und Sandstrand (ideal für kleine Kinder)</li>
+                   <li>Spazierweg zum Moorlehrpfad (Start in unserem Garten, ca. 90 min.)</li>
+               </ul>
+             </div>
+
+             <div class="day">
+               <h3>Künstlerdorf Fischerhude (15 km)</h3>
+               <ul>
+                   <li>Otto Modersohn Museum</li>
+                   <li>KAFF Kunst am Fluss</li>
+                   <li>Spaziergang durch das idyllische Dorf und am Wümme Seitenarm</li>
+                   <li>Eis essen im Cafe Lindenlaub, diverse Restaurants</li>
+               </ul>
+             </div>
+
+             <div class="day">
+               <h3>Künstlerdorf Worpswede (15 km)</h3>
+               <ul>
+                   <li>Diverse Museen z.B. Große Kunstschau</li>
+                   <li>Barkenhoff / Heinrich Vogeler</li>
+                   <li>Hammestrand – Sandstrand an der Hamme mit Spielzeug für die Kleinen</li>
+                   <li>Kanuverleih "Land of Green" / Paddeln auf der Hamme</li>
+                   <li>Spazierweg an der Hamme</li>
+               </ul>
+             </div>
+
+             <div class="day">
+               <h3>Sonstiges</h3>
+               <ul>
+                   <li>Freibad in Wilstedt (4 km)</li>
+                   <li>Freibad in Hepstedt (4 km)</li>
+                   <li>Eis essen in Wilstedt Milchkontor (4 km)</li>
+                   <li>Otterstedter See (15 km)</li>
+                   <li>Waldspielplatz Großes Holz in Zeven (15 km)</li>
+                   <li>Bremen (35 km) – Besuch im Bremer Viertel, Universum</li>
+               </ul>
+             </div>
+
+             </section>
+
+             <!-- Photos Section -->
         <section id="photos">
             <h2>Fotos vom Fest</h2>
             <p>Teilt eure schönsten Fotos vom Sommerfest mit uns!</p>
             <div style="text-align: center; margin: 2rem 0;">
-                <a href="https://photos.google.com/" target="_blank" style="display: inline-block; background-color: #FF6B35; color: white; padding: 1rem 2rem; border-radius: 4px; text-decoration: none; font-weight: bold; transition: background-color 0.3s; border: 3px solid #FFD700;">📷 Fotos hochladen</a>
+                <button style="display: inline-block; background-color: #ccc; color: #666; padding: 1rem 2rem; border-radius: 4px; text-decoration: none; font-weight: bold; transition: background-color 0.3s; border: 3px solid #999; cursor: not-allowed; opacity: 0.6;" disabled>📷 Fotos hochladen</button>
             </div>
 
         </section>
@@ -1287,6 +1347,13 @@
                 event.target.reset();
                 
                 // Erfolg-Nachricht anzeigen
+                const successMessage = document.getElementById('successMessage');
+                if (successMessage) {
+                    successMessage.style.display = 'block';
+                    setTimeout(() => {
+                        successMessage.style.display = 'none';
+                    }, 10000);
+                }
                 showStatusMessage('Vielen Dank! Dein Beitrag wurde hinzugefügt.', 'success');
                 
                 // Buffet-Liste neu laden
@@ -1478,6 +1545,15 @@
         /**
          * Initialisiert die aktive Link-Hervorhebung beim Scrollen
          */
+        function toggleAccordion(header) {
+            const content = header.nextElementSibling;
+            const toggle = header.querySelector('.accordion-toggle');
+            
+            header.classList.toggle('active');
+            content.classList.toggle('active');
+            toggle.classList.toggle('active');
+        }
+
         function initActiveLink() {
             try {
                 const sections = document.querySelectorAll('section');
@@ -1504,24 +1580,22 @@
                     }
 
                     navLinks.forEach(link => {
-                        link.classList.remove('active');
-                        if (link.getAttribute('href') === '#' + current) {
-                            link.classList.add('active');
-                            if (window.innerWidth <= 768 && headerNav.classList.contains('nav-open')) {
-                                const linkPosition = link.offsetTop;
-                                const linkHeight = link.offsetHeight;
-                                const headerHeight = headerNav.offsetHeight;
-                                const currentScroll = headerNav.scrollTop;
-                                
-                                if (linkPosition + linkHeight > currentScroll + headerHeight) {
-                                    headerNav.scrollTop = linkPosition + linkHeight - headerHeight + 20;
-                                }
-                                else if (linkPosition < currentScroll) {
-                                    headerNav.scrollTop = Math.max(0, linkPosition - 20);
-                                }
-                            }
-                        }
-                    });
+                         link.classList.remove('active');
+                         if (link.getAttribute('href') === '#' + current) {
+                             link.classList.add('active');
+                             const linkPosition = link.offsetTop;
+                             const linkHeight = link.offsetHeight;
+                             const headerHeight = headerNav.offsetHeight;
+                             const currentScroll = headerNav.scrollTop;
+                             
+                             if (linkPosition + linkHeight > currentScroll + headerHeight) {
+                                 headerNav.scrollTop = linkPosition + linkHeight - headerHeight + 20;
+                             }
+                             else if (linkPosition < currentScroll) {
+                                 headerNav.scrollTop = Math.max(0, linkPosition - 20);
+                             }
+                             }
+                             });
                 }
 
                 window.addEventListener('scroll', updateActiveLink);
