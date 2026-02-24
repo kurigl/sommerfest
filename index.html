@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex">
-    <title>Sommerfest 2025</title>
+    <title>Sommerfest 2026</title>
     <!-- Supabase JS SDK v2 -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
@@ -597,6 +597,142 @@
             transform: scale(1.1);
         }
 
+        /* Password Protection */
+        .password-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #FFF8DC;
+            background-image: 
+                repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255, 107, 53, 0.03) 10px, rgba(255, 107, 53, 0.03) 20px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+        }
+
+        .password-screen.hidden {
+            display: none;
+        }
+
+        .password-box {
+            background: white;
+            padding: 2rem;
+            border-radius: 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            border: 4px solid #FF6B35;
+            border-left: 8px solid #1ABC9C;
+            max-width: 340px;
+            width: 90%;
+            text-align: center;
+        }
+
+        .password-box h2 {
+            color: #FF6B35;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .password-box p {
+            color: #444;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+
+        .password-input-wrapper {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+
+        .password-input {
+            width: 100%;
+            padding: 1rem;
+            padding-right: 3rem;
+            font-size: 1.1rem;
+            border: 3px solid #FF6B35;
+            border-radius: 4px;
+            text-align: center;
+            letter-spacing: 0.2em;
+        }
+
+        .password-input:focus {
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(255, 107, 53, 0.2);
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            color: #FF6B35;
+            transition: opacity 0.3s;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .password-toggle:hover {
+            opacity: 0.7;
+        }
+
+        .password-toggle svg {
+            width: 24px;
+            height: 24px;
+            display: block;
+        }
+
+        .password-btn {
+            width: 100%;
+            padding: 1.2rem;
+            background: linear-gradient(135deg, #FF6B35 0%, #FF8C42 100%);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .password-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 107, 53, 0.4);
+        }
+
+        .password-btn:active {
+            transform: translateY(0);
+        }
+
+        .password-error {
+            color: #d32f2f;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        .password-error.show {
+            display: block;
+            animation: shake 0.5s;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             h1 img {
@@ -732,6 +868,30 @@
     </style>
 </head>
 <body>
+    <!-- Password Protection Screen -->
+    <div class="password-screen" id="passwordScreen">
+        <div class="password-box">
+            <h2>Sommerfest</h2>
+            <p>Passwort eingeben</p>
+            <div class="password-input-wrapper">
+                <input type="password" id="passwordInput" class="password-input" placeholder="••••" inputmode="text">
+                <button type="button" class="password-toggle" id="passwordToggle" aria-label="Passwort anzeigen">
+                    <svg id="eyeOpen" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 5C6 5 2 12 2 12s4 7 10 7 10-7 10-7-4-7-10-7z"/>
+                        <circle cx="12" cy="12" r="3"/>
+                    </svg>
+                    <svg id="eyeClosed" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;">
+                        <path d="M3 3l18 18M12 5c-6 0-10 7-10 7s4 7 10 7 10-7 10-7-4-7-10-7z"/>
+                        <circle cx="12" cy="12" r="3"/>
+                    </svg>
+                </button>
+            </div>
+            <button class="password-btn" id="passwordBtn">Zugang</button>
+            <div class="password-error" id="passwordError">Passwort falsch</div>
+            <p style="margin-top: 1.5rem; font-size: 0.9rem; color: #444; font-style: italic;">Hinweis: Wo findet die Feier statt?</p>
+        </div>
+    </div>
+
     <!-- Hamburger Menu Button -->
     <button class="hamburger-btn" id="hamburgerBtn" aria-label="Menü öffnen">☰</button>
 
@@ -759,6 +919,7 @@
         <section id="welcome">
             <a href="https://www.youtube.com/watch?v=pEmX5HR9ZxU" target="_blank" style="text-decoration: none; color: inherit;">
                 <h2 style="margin-bottom: 0; cursor: pointer; display: flex; align-items: center; gap: 0.5rem;">And the Beat Goes On <span style="font-size: 1.8rem; color: #FF6B35;">♫</span></h2>
+                <p style="font-size: 0.85rem; color: #999; margin: 0.5rem 0 0 0; font-style: italic;">↑ hier klicken</p>
             </a>
             <div class="welcome-highlight">
                 <p>
@@ -943,7 +1104,7 @@
                  </div>
              </div>
 
-             <p style="margin-top: 2rem; font-size: 0.95rem; word-break: break-word;">Weitere Unterkünfte in der Region findet ihr auf <a href="https://www.tarmstedt.de/index.php/unterkuenfte.html" target="_blank">https://www.tarmstedt.de/index.php/unterkuenfte.html</a>.</p>
+             <p style="margin-top: 2rem; font-size: 0.95rem; word-break: break-word;">Weitere Unterkünfte in der Region findet ihr auf <a href="https://www.tarmstedt.de/Tourismus/Unterkunfte" target="_blank">www.tarmstedt.de/Tourismus/Unterkünfte</a>.</p>
              </section>
 
              <!-- Activities & Surroundings Section -->
@@ -1666,6 +1827,113 @@
 
         // App starten wenn DOM geladen ist
         document.addEventListener('DOMContentLoaded', initApp);
+
+        // =============================================
+        // PASSWORD PROTECTION
+        // =============================================
+        
+        // WICHTIG: Passwort hier ändern! (Base64 encoded)
+        // Um Passwort zu ändern: https://www.base64encode.org/ verwenden
+        // Beispiel: "Garten" wird zu "R2FydGVu"
+        const CORRECT_PASSWORD = atob('R2FydGVu');
+        const MAX_ATTEMPTS = 5;
+        const LOCKOUT_TIME = 300000; // 5 Minuten
+        
+        function initPasswordProtection() {
+            const passwordInput = document.getElementById('passwordInput');
+            const passwordBtn = document.getElementById('passwordBtn');
+            const passwordToggle = document.getElementById('passwordToggle');
+            const passwordError = document.getElementById('passwordError');
+            const passwordScreen = document.getElementById('passwordScreen');
+            
+            // Prüfe ob Passwort bereits eingegeben wurde
+            if (sessionStorage.getItem('sommerfestAccess') === 'true') {
+                passwordScreen.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+                return;
+            }
+            
+            // Scrolling blockieren wenn Passwort nicht eingegeben
+            document.body.style.overflow = 'hidden';
+            
+            let attempts = 0;
+            let isLocked = false;
+            let showPassword = false;
+            
+            // Passwort anzeigen/verbergen Toggle
+            passwordToggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                showPassword = !showPassword;
+                passwordInput.type = showPassword ? 'text' : 'password';
+                const eyeOpen = document.getElementById('eyeOpen');
+                const eyeClosed = document.getElementById('eyeClosed');
+                eyeOpen.style.display = showPassword ? 'none' : 'block';
+                eyeClosed.style.display = showPassword ? 'block' : 'none';
+            });
+            
+            // Button-Klick
+            passwordBtn.addEventListener('click', checkPassword);
+            
+            // Enter-Taste
+            passwordInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter' && !isLocked) {
+                    checkPassword();
+                }
+            });
+            
+            function checkPassword() {
+                if (isLocked) {
+                    return;
+                }
+                
+                const input = passwordInput.value;
+                
+                if (input === CORRECT_PASSWORD) {
+                    // Zugang gewährt
+                    sessionStorage.setItem('sommerfestAccess', 'true');
+                    passwordScreen.classList.add('hidden');
+                    document.body.style.overflow = 'auto';
+                    passwordError.classList.remove('show');
+                    attempts = 0;
+                } else {
+                    // Falsch
+                    attempts++;
+                    
+                    if (attempts >= MAX_ATTEMPTS) {
+                        // Zu viele Versuche - sperren
+                        isLocked = true;
+                        passwordError.textContent = 'Zu viele Versuche. Bitte 5 Minuten warten.';
+                        passwordError.classList.add('show');
+                        passwordInput.disabled = true;
+                        passwordBtn.disabled = true;
+                        
+                        setTimeout(() => {
+                            isLocked = false;
+                            attempts = 0;
+                            passwordError.textContent = 'Passwort falsch';
+                            passwordError.classList.remove('show');
+                            passwordInput.disabled = false;
+                            passwordBtn.disabled = false;
+                            passwordInput.value = '';
+                            passwordInput.focus();
+                        }, LOCKOUT_TIME);
+                    } else {
+                        // Normal falsch
+                        passwordError.textContent = `Passwort falsch (${attempts}/${MAX_ATTEMPTS})`;
+                        passwordError.classList.add('show');
+                        passwordInput.value = '';
+                        passwordInput.focus();
+                    }
+                }
+            }
+        }
+        
+        // Password Protection initialisieren
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initPasswordProtection);
+        } else {
+            initPasswordProtection();
+        }
     </script>
 
 </body>
