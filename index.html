@@ -888,7 +888,7 @@
             </div>
             <button class="password-btn" id="passwordBtn">Zugang</button>
             <div class="password-error" id="passwordError">Passwort falsch</div>
-            <p style="margin-top: 1.5rem; font-size: 0.9rem; color: #444; font-style: italic;">Hinweis: Wo findet die Feier statt?</p>
+            <p style="margin-top: 1.5rem; font-size: 0.9rem; color: #444; font-style: italic;">Passworthinweis: Erst gemeinsam wird es rund.</p>
         </div>
     </div>
 
@@ -925,7 +925,7 @@
                 <p>
                     <strong style="font-size: 1.1rem;">Einladung zum Sommerfest</strong><br><br>
                     <strong>Datum:</strong> 03.–05. Juli 2026<br>
-                    <strong>Ort:</strong> In unserem Garten
+                    <strong>Ort:</strong> In unserem Garten in der Bauernreihe 5, Tarmstedt
                 </p>
             </div>
             <div style="font-size: 0.95rem; margin: 1.5rem 0; padding: 1rem; background-color: #FFF9E6; border-left: 4px solid #FF6B35; color: #555;">
@@ -1054,7 +1054,7 @@
 
              <div class="accordion">
                  <div class="accordion-header" onclick="toggleAccordion(this)">
-                     <span>Wilstedt (ca. 4 km)</span>
+                     <span>Wilstedt (4 km)</span>
                      <span class="accordion-toggle">▼</span>
                  </div>
                  <div class="accordion-content">
@@ -1094,7 +1094,7 @@
 
              <div class="accordion">
                  <div class="accordion-header" onclick="toggleAccordion(this)">
-                     <span>Worpswede (ca. 15 km)</span>
+                     <span>Worpswede (15 km)</span>
                      <span class="accordion-toggle">▼</span>
                  </div>
                  <div class="accordion-content">
@@ -1104,7 +1104,7 @@
                  </div>
              </div>
 
-             <p style="margin-top: 2rem; font-size: 0.95rem; word-break: break-word;">Weitere Unterkünfte in der Region findet ihr auf <a href="https://www.tarmstedt.de/Tourismus/Unterkunfte" target="_blank">www.tarmstedt.de/Tourismus/Unterkünfte</a>.</p>
+             <p style="margin-top: 2rem; font-size: 0.95rem; word-break: break-word;">Weitere Unterkünfte in der Region findet ihr auf <a href="https://www.tarmstedt.de/index.php/unterkuenfte.html" target="_blank">www.tarmstedt.de/Unterkünfte</a>.</p>
              </section>
 
              <!-- Activities & Surroundings Section -->
@@ -1187,6 +1187,7 @@
     <!-- Footer -->
     <footer>
         <p>Wir freuen uns auf euch!</p>
+        <p style="font-size: 0.8rem; margin-top: 1rem; opacity: 0.8;">Diese Seite nutzt Supabase für die Verwaltung des Buffets.</p>
     </footer>
 
     <!-- JavaScript -->
@@ -1834,8 +1835,8 @@
         
         // WICHTIG: Passwort hier ändern! (Base64 encoded)
         // Um Passwort zu ändern: https://www.base64encode.org/ verwenden
-        // Beispiel: "Garten" wird zu "R2FydGVu"
-        const CORRECT_PASSWORD = atob('R2FydGVu');
+        // Beispiel: "Recke" wird zu "UmVja2U="
+        const CORRECT_PASSWORD = atob('UmVja2U=');
         const MAX_ATTEMPTS = 5;
         const LOCKOUT_TIME = 300000; // 5 Minuten
         
